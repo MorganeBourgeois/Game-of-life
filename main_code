@@ -1,0 +1,83 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 23 11:33:36 2020
+
+@author: bourg
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib import colors
+
+t=0
+dt=0.01
+
+#initialization random
+data = np.random.rand(10,10)
+data=data.round()
+
+#initialization
+#data=np.zeros((10,10))
+#data[3:5,4:6]=1
+#data[5,5]=1
+
+#create discrete colormap
+cmap = colors.ListedColormap(['white','black'])
+bounds = [0,1]
+norm = colors.BoundaryNorm(bounds, cmap.N)
+
+fig, ax = plt.subplots()
+line, = plt.plot([],[]) 
+ax.imshow(data, cmap=cmap)
+
+def init():
+    line.set_data([],[])
+    return line,
+
+#draw gridlines
+#ax.grid(which='major', axis='both', linestyle='-', color='k', linewidth=0.5)
+#ax.set_xticks(np.arange(-0.5, 10, 1));
+#ax.set_yticks(np.arange(-0.5, 10, 1));
+
+def animate(i):
+    data = np.random.rand(10,10)
+    data=data.round()
+    return line,
+
+ani = animation.FuncAnimation(fig, animate, init_func=init, frames=100, blit=True, interval=20, repeat=False)
+
+
+plt.show()
+
+#________________________________________________
+#k = 2*np.pi
+#w = 2*np.pi
+#dt = 0.01
+#
+#xmin = 0
+#xmax = 3
+#nbx = 100
+#
+#x = np.linspace(xmin, xmax, nbx)
+#
+##fig = plt.figure() # initialise la figure
+##line, = plt.plot([],[]) 
+##plt.xlim(xmin, xmax)
+##plt.ylim(-1,1)
+#
+## fonction à définir quand blit=True
+## crée l'arrière de l'animation qui sera présent sur chaque image
+#def init():
+#    line.set_data([],[])
+#    return line,
+#
+#def animate(i): 
+#    t = i * dt
+#    y = np.cos(k*x - w*t)
+#    line.set_data(x, y)
+#    return line,
+#
+#ani = animation.FuncAnimation(fig, animate, init_func=init, frames=100, blit=True, interval=20, repeat=False)
+#
+#plt.show()
