@@ -1,6 +1,9 @@
 # How to create an animation using the function animation() from matplotlib or not
 # Two examples
 
+# run --> %matplotlib qt
+# in IPython before the code
+
 #______________________________________________________________________________________________________
 # ANIMATION WITH THE FUNCTION animation()
 
